@@ -126,4 +126,7 @@
     <string name="no_data">Data tidak ditemukan</string>
     <string name="pilih_gambar">Pilih Gambar</string>
     <string name="upload_gambar">Upload Gambar</string>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="fcm_message">FCM Message</string>
 </resources>
