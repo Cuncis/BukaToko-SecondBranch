@@ -220,6 +220,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_profil) {
             startActivity(new Intent(MainActivity.this, ProfileActivity.class));
         } else if (id == R.id.nav_logout) {
+
+            AuthState.updateToken(MainActivity.this, "");
+
             App.prefsManager.logoutUser();
             AuthState.isLoggedOut(menu);
         }

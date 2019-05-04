@@ -13,9 +13,11 @@ import android.widget.Toast;
 
 import com.boss.cuncis.bukatoko.App;
 import com.boss.cuncis.bukatoko.R;
+import com.boss.cuncis.bukatoko.data.db.PrefsManager;
 import com.boss.cuncis.bukatoko.data.model.User;
 import com.boss.cuncis.bukatoko.data.retrofit.ApiClient;
 import com.boss.cuncis.bukatoko.data.retrofit.ApiInterface;
+import com.boss.cuncis.bukatoko.utils.AuthState;
 import com.boss.cuncis.bukatoko.utils.Converter;
 import com.xwray.passwordview.PasswordView;
 
@@ -75,6 +77,9 @@ public class SigninFragment extends Fragment {
 
                     App.prefsManager.createLoginSession(String.valueOf(data.getId()), data.getName(),
                             data.getEmail(), password);
+
+                    App.sessPref = App.prefsManager.getUserDetails();
+                    AuthState.updateToken(getContext(), App.sessPref.get(PrefsManager.SESS_TOKEN));
 
                     getActivity().finish();
                 } else {

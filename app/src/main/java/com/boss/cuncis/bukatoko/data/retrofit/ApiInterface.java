@@ -78,6 +78,11 @@ public interface ApiInterface {
     @GET("notification/{id}")
     Call<Notification> myNotifications(@Path("id") String userId);
 
+    @FormUrlEncoded
+    @POST("auth/firebase-token/{id}")
+    Call<User> updateToken(@Path("id") String id,
+                       @Field("token") String token);
+
     // Raja ongkir - end Point
 
     @GET("city")
