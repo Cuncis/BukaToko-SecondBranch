@@ -114,7 +114,7 @@ public class OngkirActivity extends AppCompatActivity {
         serviceList = new ArrayList<>();
         valueList = new ArrayList<>();
 
-        getSupportActionBar().setTitle("Cek Ongkos Kirim");
+        getSupportActionBar().setTitle("Transaksi Pembayaran");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
