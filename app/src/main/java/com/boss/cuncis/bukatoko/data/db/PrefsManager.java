@@ -21,6 +21,7 @@ public class PrefsManager {
     public static final String SESS_NAME = "name";
     public static final String SESS_EMAIL = "email";
     public static final String SESS_PASS = "password";
+    public static final String SESS_TOKEN = "token";
 
     public PrefsManager(Context context) {
         this.context = context;
@@ -40,19 +41,31 @@ public class PrefsManager {
         Toast.makeText(context, "Berhasil masuk sebagai " + name, Toast.LENGTH_SHORT).show();
     }
 
+    public void createTokenSession(String token) {
+        editor.putString(SESS_TOKEN, token);
+        editor.commit();
+
+//        Toast.makeText(context, "Berhasil masuk sebagai " + name, Toast.LENGTH_SHORT).show();
+    }
+
     public HashMap<String, String> getUserDetails() {
         HashMap<String, String> user = new HashMap<>();
         user.put(SESS_ID, pref.getString(SESS_ID, null));
         user.put(SESS_NAME, pref.getString(SESS_NAME, null));
         user.put(SESS_EMAIL, pref.getString(SESS_EMAIL, null));
         user.put(SESS_PASS, pref.getString(SESS_PASS, null));
+        user.put(SESS_TOKEN, pref.getString(SESS_TOKEN, null));
 
         return user;
     }
 
     public void logoutUser() {
-        editor.clear();
+//        editor.clear();
+
+        createLoginSession(null, null, null, null);
+        editor.putBoolean(IS_LOGIN, false);
         editor.commit();
+
         Toast.makeText(context, "Keluar", Toast.LENGTH_SHORT).show();
     }
 

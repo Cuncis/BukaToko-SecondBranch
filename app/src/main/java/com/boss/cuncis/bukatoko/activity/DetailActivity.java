@@ -151,7 +151,7 @@ public class DetailActivity extends AppCompatActivity implements BaseSliderView.
             sliderView
                     .image(urlImage.get(i))
                     .setRequestOption(requestOptions)
-                    .setBackgroundColor(Color.TRANSPARENT)
+//                    .setBackgroundColor(Color.TRANSPARENT)
                     .setProgressBarVisible(false)
                     .setOnSliderClickListener(this);
 

@@ -13,6 +13,7 @@ import com.boss.cuncis.bukatoko.App;
 import com.boss.cuncis.bukatoko.R;
 import com.boss.cuncis.bukatoko.activity.CartActivity;
 import com.boss.cuncis.bukatoko.activity.SignupActivity;
+import com.boss.cuncis.bukatoko.data.db.PrefsManager;
 import com.boss.cuncis.bukatoko.data.model.User;
 import com.boss.cuncis.bukatoko.data.retrofit.ApiClient;
 import com.boss.cuncis.bukatoko.data.retrofit.ApiInterface;
@@ -56,6 +57,9 @@ public class LoginDialog {
                                     AuthState.isLoggedIn(menu);
                                     App.prefsManager.createLoginSession(String.valueOf(data.getId()), data.getName(),
                                             data.getEmail(), password);
+
+                                    App.sessPref = App.prefsManager.getUserDetails();
+                                    AuthState.updateToken(context, App.sessPref.get(PrefsManager.SESS_TOKEN));
 
                                     dialog.dismiss();
                                 } else {

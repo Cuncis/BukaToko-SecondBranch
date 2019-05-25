@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "445546048502",
+    "firebase_url": "https://toko-online-f646f.firebaseio.com",
+    "project_id": "toko-online-f646f",
+    "storage_bucket": "toko-online-f646f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445546048502:android:232d704e857f6abc",
+        "android_client_info": {
+          "package_name": "com.boss.cuncis.bukatoko"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445546048502-s9ko3pv1c3sf4tlqp7d078k3p5t6t9qh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFHEaSxs53ms6xFIGmY8NmcoYwIo3XM7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445546048502-s9ko3pv1c3sf4tlqp7d078k3p5t6t9qh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

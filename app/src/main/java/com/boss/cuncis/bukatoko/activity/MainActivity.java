@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.boss.cuncis.bukatoko.App;
 import com.boss.cuncis.bukatoko.R;
 import com.boss.cuncis.bukatoko.adapter.ProductAdapter;
+import com.boss.cuncis.bukatoko.data.db.PrefsManager;
 import com.boss.cuncis.bukatoko.data.model.Product;
 import com.boss.cuncis.bukatoko.data.retrofit.ApiClient;
 import com.boss.cuncis.bukatoko.data.retrofit.ApiInterface;
@@ -52,6 +53,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        App.sessPref = App.prefsManager.getUserDetails();
+        Log.d(TAG, "onCreate: token_firebase" + App.sessPref.get(PrefsManager.SESS_TOKEN));
 
         searchProduct();
         floatingButton();
@@ -216,6 +220,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_profil) {
             startActivity(new Intent(MainActivity.this, ProfileActivity.class));
         } else if (id == R.id.nav_logout) {
+
+            AuthState.updateToken(MainActivity.this, "");
+
             App.prefsManager.logoutUser();
             AuthState.isLoggedOut(menu);
         }
