@@ -3,6 +3,7 @@ package com.boss.cuncis.bukatoko.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -53,9 +54,16 @@ public class OngkirActivity extends AppCompatActivity {
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
+    @BindView(R.id.txtTotalPembayaran)
+    TextView tvTotalPembayaran;
+
+    @BindView(R.id.linear_noRekening)
+    LinearLayout linearNoRekening;
+
     // jika ingin mengubah text/color di button pake BindView
     @OnClick(R.id.btnSave) void clickSave() {
-        if (edtDestination.length()>0 || edtAddress.length()>0) {
+        if (edtDestination.length()>0 && edtAddress.length()>0) {
+            linearNoRekening.setVisibility(View.VISIBLE);
             linearTrans.setVisibility(View.VISIBLE);
             linearSave.setVisibility(View.GONE);
 
@@ -78,6 +86,8 @@ public class OngkirActivity extends AppCompatActivity {
             transPost.setDetailList(arrayList);
 
             postTransaction(transPost);
+        } else if (TextUtils.isEmpty(edtAddress.getText().toString().trim())) {
+            Toast.makeText(this, "Lengkapi alamat pengiriman", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Lengkapi alamat pengiriman", Toast.LENGTH_SHORT).show();
         }
@@ -110,6 +120,8 @@ public class OngkirActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ongkir);
         ButterKnife.bind(this);
+
+        linearNoRekening.setVisibility(View.GONE);
 
         serviceList = new ArrayList<>();
         valueList = new ArrayList<>();
@@ -178,6 +190,9 @@ public class OngkirActivity extends AppCompatActivity {
                     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                         tvOngkir.setText("Rp " + Converter.rupiah(valueList.get(position)));
                         ongkirValue = valueList.get(position);
+
+                        tvTotalPembayaran.setText("Rp " + Converter.rupiah(CartActivity.adapter.getTotal() + ongkirValue));
+                        Log.d("_logGrandTotal", "onItemSelected: " +  "Rp " + Converter.rupiah(CartActivity.adapter.getTotal() + ongkirValue));
                     }
 
                     @Override
