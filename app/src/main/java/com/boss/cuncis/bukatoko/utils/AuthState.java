@@ -22,6 +22,7 @@ public class AuthState {
         menu.findItem(R.id.nav_notif).setVisible(true);
         menu.findItem(R.id.nav_transaski).setVisible(true);
         menu.findItem(R.id.nav_profil).setVisible(true);
+        menu.findItem(R.id.nav_rekomkendasi).setVisible(true);
         menu.findItem(R.id.nav_logout).setVisible(true);
 
         menu.findItem(R.id.nav_login).setVisible(false);
@@ -31,6 +32,7 @@ public class AuthState {
         menu.findItem(R.id.nav_notif).setVisible(false);
         menu.findItem(R.id.nav_transaski).setVisible(false);
         menu.findItem(R.id.nav_profil).setVisible(false);
+        menu.findItem(R.id.nav_rekomkendasi).setVisible(false);
         menu.findItem(R.id.nav_logout).setVisible(false);
 
         menu.findItem(R.id.nav_login).setVisible(true);
