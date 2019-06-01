@@ -63,4 +63,50 @@ public class AuthState {
         });
     }
 
+    public static void updateHeaderUser(final Context context, String nama, String email) {
+
+        App.sessPref = App.prefsManager.getUserDetails();
+
+        ApiInterface apiInterface = new ApiClient().getClient().create(ApiInterface.class);
+        Call<User> call = apiInterface.updateHeaderUser(App.sessPref.get(App.prefsManager.SESS_ID), nama, email);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                Log.d("_FbResponse", response.toString() );
+
+                if (response.isSuccessful()) {
+                    Toast.makeText(context, "Token Berhasil diperbarui", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "" + response.message(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(context, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.boss.cuncis.bukatoko.App;
@@ -47,19 +48,22 @@ public class MainActivity extends AppCompatActivity
     SwipeRefreshLayout swipeRefreshLayout;
     Menu menu;
 
+    TextView tvHeaderName, tvHeaderEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        navigationDrawer();
 
         App.sessPref = App.prefsManager.getUserDetails();
         Log.d(TAG, "onCreate: token_firebase" + App.sessPref.get(PrefsManager.SESS_TOKEN));
 
+
         searchProduct();
         floatingButton();
-        navigationDrawer();
         initRecycler();
     }
 
@@ -84,6 +88,10 @@ public class MainActivity extends AppCompatActivity
         call.enqueue(new Callback<Product>() {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
+                App.sessPref = App.prefsManager.getUserDetails();
+                tvHeaderName.setText(App.sessPref.get(PrefsManager.SESS_NAME));
+                tvHeaderEmail.setText(App.sessPref.get(PrefsManager.SESS_EMAIL));
+
                 Product product = response.body();
                 List<Product.Data> products = product.getProducts();
 
@@ -113,6 +121,10 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.getHeaderView(0);
+        tvHeaderName = headerView.findViewById(R.id.tv_headerName);
+        tvHeaderEmail = headerView.findViewById(R.id.tv_headerEmail);
 
         menu = navigationView.getMenu();
     }
@@ -222,6 +234,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_rekomkendasi) {
             startActivity(new Intent(MainActivity.this, RekomendasiActivity.class));
         } else if (id == R.id.nav_logout) {
+            tvHeaderName.setText("");
+            tvHeaderEmail.setText("");
 
             AuthState.updateToken(MainActivity.this, "");
 

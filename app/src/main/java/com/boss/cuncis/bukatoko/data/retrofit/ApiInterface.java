@@ -83,6 +83,12 @@ public interface ApiInterface {
     Call<User> updateToken(@Path("id") String id,
                        @Field("token") String token);
 
+    @FormUrlEncoded
+    @POST("auth/update/{id}")
+    Call<User> updateHeaderUser(@Path("id") String id,
+                          @Field("name") String name,
+                          @Field("email") String email);
+
     // Raja ongkir - end Point
 
     @GET("city")
