@@ -32,6 +32,7 @@ import com.boss.cuncis.bukatoko.dialog.LoginDialog;
 import com.boss.cuncis.bukatoko.utils.AuthState;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity
     Menu menu;
 
     TextView tvHeaderName, tvHeaderEmail;
+
+    ProductAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +98,8 @@ public class MainActivity extends AppCompatActivity
                 Product product = response.body();
                 List<Product.Data> products = product.getProducts();
 
-                recyclerView.setAdapter(new ProductAdapter(products, MainActivity.this));
+                adapter = new ProductAdapter(products, MainActivity.this);
+                recyclerView.setAdapter(adapter);
 
                 for (int i = 0; i < products.size(); i++) {
                     Log.d(TAG, "onResponse: " + products.get(i).getProduct());
@@ -144,7 +148,8 @@ public class MainActivity extends AppCompatActivity
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(MainActivity.this, "" + query, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "" + query, Toast.LENGTH_SHORT).show();
+                adapter.getFilter().filter(query);
                 return false;
             }
 
