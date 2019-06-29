@@ -14,95 +14,102 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp">
-            <TextView
-                android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="CEK ONGKIR JNE"
-                android:textColor="@color/colorPrimary"
-                android:textSize="36sp"
-                android:textStyle="bold"/>
-            <EditText
-                android:id="@+id/edtDestination"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="false"
-                android:hint="Kota Asal"/>
-            <EditText
-                android:id="@+id/edtAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minLines="3"
-                android:maxLines="5"
-                android:hint="Tulis alamat lengkap, seperti nama jalan dan kodepos .."
-                android:textSize="16sp"
-                android:gravity="left"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Tujuan"
-                android:textSize="12sp"
-                android:padding="5dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Surabaya - Benowo, Jawa timur 60197"
-                android:textStyle="bold"
-                android:padding="5dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Service Pengiriman"
-                android:textSize="12sp"
-                android:padding="5dp"/>
-            <Spinner
-                android:id="@+id/spnService"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Ongkor Kirim"
-                android:textSize="12sp"
-                android:padding="5dp"/>
-            <TextView
-                android:id="@+id/txtOngkir"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Rp 0"
-                android:textStyle="bold"
-                android:padding="5dp"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="5dp"
-                android:background="@color/colorBackgroundImage"/>
 
-            <!-- Updated -->
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Total Pembayaran"
-                android:textSize="12sp"
-                android:padding="5dp"/>
-            <TextView
-                android:id="@+id/txtTotalPembayaran"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Rp 0"
-                android:textStyle="bold"
-                android:padding="5dp"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="5dp"
-                android:background="@color/colorBackgroundImage"/>
-            <!-- Updated -->
+                android:id="@+id/linear1"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="CEK ONGKIR JNE"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="36sp"
+                    android:textStyle="bold"/>
+                <EditText
+                    android:id="@+id/edtDestination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="Kota Asal"/>
+                <EditText
+                    android:id="@+id/edtAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minLines="3"
+                    android:maxLines="5"
+                    android:hint="Tulis alamat lengkap, seperti nama jalan dan kodepos .."
+                    android:textSize="16sp"
+                    android:gravity="left"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Alamat Kantor CV. Green Deahan"
+                    android:textSize="12sp"
+                    android:padding="5dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Surabaya - Benowo, Jawa timur 60197"
+                    android:textStyle="bold"
+                    android:padding="5dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Service Pengiriman"
+                    android:textSize="12sp"
+                    android:padding="5dp"/>
+                <Spinner
+                    android:id="@+id/spnService"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Ongkor Kirim"
+                    android:textSize="12sp"
+                    android:padding="5dp"/>
+                <TextView
+                    android:id="@+id/txtOngkir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rp 0"
+                    android:textStyle="bold"
+                    android:padding="5dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorBackgroundImage"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Total Pembayaran"
+                    android:textSize="12sp"
+                    android:padding="5dp"/>
+                <TextView
+                    android:id="@+id/txtTotalPembayaran"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rp 0"
+                    android:textStyle="bold"
+                    android:padding="5dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorBackgroundImage"/>
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -124,6 +131,121 @@
                     android:layout_height="1dp"
                     android:layout_margin="5dp"
                     android:background="@color/colorBackgroundImage"/>
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="16dp"-->
+                    <!--android:text="Kode Transaksi"-->
+                    <!--android:textSize="12sp"-->
+                    <!--android:padding="5dp"/>-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/et_kodeTransaksi"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:focusableInTouchMode="false"-->
+                    <!--android:inputType="text"-->
+                    <!--android:hint="Kode Transaksi"/>-->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Nama Pengirim"
+                    android:textSize="12sp"
+                    android:padding="5dp"/>
+
+                <EditText
+                    android:id="@+id/et_namaPengirim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="Nama Pengirim"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Email Pengirim"
+                    android:textSize="12sp"
+                    android:padding="5dp"/>
+
+                <EditText
+                    android:id="@+id/et_emailPengirim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="Email Pengirim"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Tanggal Transfer"
+                    android:textSize="12sp"
+                    android:padding="5dp"/>
+
+                <EditText
+                    android:id="@+id/et_tglTransfer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="false"
+                    android:inputType="text"
+                    android:hint="Tanggal Transfer"
+                    android:padding="8dp"
+                    android:drawableRight="@drawable/ic_date_range"
+                    android:background="@drawable/cell_edittext"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Pilih Bank"
+                    android:textSize="12sp"
+                    android:padding="5dp"/>
+
+                <EditText
+                    android:id="@+id/et_bank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="false"
+                    android:inputType="text"
+                    android:drawableEnd="@drawable/ic_arrow_drop_down"
+                    android:background="@drawable/cell_edittext"
+                    android:padding="8dp"
+                    android:hint="Pilih Bank"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Nominal yang ditransfer"
+                    android:textSize="12sp"
+                    android:padding="5dp"/>
+
+                <EditText
+                    android:id="@+id/et_nominal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:hint="Nominal yang ditransfer"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Keterangan (Optional)"
+                    android:textSize="12sp"
+                    android:padding="5dp"/>
+
+                <EditText
+                    android:id="@+id/et_keterangan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="Keterangan"/>
+
             </LinearLayout>
 
             <ProgressBar

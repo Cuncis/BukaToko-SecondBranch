@@ -23,9 +23,12 @@ public class TransUnpaidAdapter extends RecyclerView.Adapter<TransUnpaidAdapter.
     private List<TransUser.Data> transUnpaid;
     private Context context;
 
+//    public static int transStatus;
+
     public TransUnpaidAdapter(List<TransUser.Data> transUnpaid, Context context) {
         this.transUnpaid = transUnpaid;
         this.context = context;
+//        transStatus = transUnpaid.size();
     }
 
     @NonNull

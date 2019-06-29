@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.trans.PaidFragment"
     android:paddingStart="4dp"
     android:paddingEnd="4dp">
@@ -12,10 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.RecyclerView
+        <android.support.v4.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/recyclerview_transPaid"/>
+            android:id="@+id/swipe">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recyclerview_transPaid"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <TextView
             android:layout_width="match_parent"

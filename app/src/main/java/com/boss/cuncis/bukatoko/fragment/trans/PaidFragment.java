@@ -3,6 +3,7 @@ package com.boss.cuncis.bukatoko.fragment.trans;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -33,6 +34,8 @@ public class PaidFragment extends Fragment {
     RecyclerView recyclerView;
     TextView textView;
 
+    SwipeRefreshLayout swipeRefreshLayout;
+
     public PaidFragment() {
         // Required empty public constructor
     }
@@ -44,10 +47,21 @@ public class PaidFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_paid, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerview_transPaid);
+        swipeRefreshLayout = view.findViewById(R.id.swipe);
         textView = view.findViewById(R.id.textView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        recyclerView.setAdapter(null);
         getTrans();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                recyclerView.setAdapter(null);
+                getTrans();
+            }
+        });
+
         return view;
     }
 
@@ -67,6 +81,8 @@ public class PaidFragment extends Fragment {
                 } else {
                     textView.setVisibility(View.VISIBLE);
                 }
+
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
