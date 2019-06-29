@@ -3,12 +3,14 @@ package com.boss.cuncis.bukatoko.fragment.trans;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.boss.cuncis.bukatoko.App;
 import com.boss.cuncis.bukatoko.R;
@@ -32,10 +34,12 @@ public class UnpaidFragment extends Fragment {
     RecyclerView recyclerView;
     TextView textView;
 
+    SwipeRefreshLayout swipeRefreshLayout;
+
+
     public UnpaidFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,10 +47,21 @@ public class UnpaidFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_unpaid, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerview_transUnpaid);
+        swipeRefreshLayout = view.findViewById(R.id.swipe);
         textView = view.findViewById(R.id.textView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        recyclerView.setAdapter(null);
         getTrans();
+        Toast.makeText(getActivity(), "Jika Belum muncul status transaksi anda, harap swipe up halaman ini", Toast.LENGTH_SHORT).show();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                recyclerView.setAdapter(null);
+                getTrans();
+            }
+        });
 
         return view;
     }
@@ -67,6 +82,8 @@ public class UnpaidFragment extends Fragment {
                 } else {
                     textView.setVisibility(View.VISIBLE);
                 }
+
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override

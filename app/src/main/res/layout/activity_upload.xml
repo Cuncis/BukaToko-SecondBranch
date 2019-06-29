@@ -37,24 +37,24 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_gallery"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="@string/pilih_gambar"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_gallery"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="40dp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="@string/pilih_gambar"-->
+                    <!--android:textSize="18sp"-->
+                    <!--android:textStyle="bold" />-->
 
                 <Button
                     android:id="@+id/btn_upload"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/custom_button"
                     android:text="@string/upload_gambar"
                     android:textColor="@color/colorWhite"
-                    android:visibility="gone" />
+                    android:visibility="visible"/>
 
             </LinearLayout>
         </LinearLayout>

@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.boss.cuncis.bukatoko.App;
@@ -31,6 +32,7 @@ import com.boss.cuncis.bukatoko.dialog.LoginDialog;
 import com.boss.cuncis.bukatoko.utils.AuthState;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -47,19 +49,24 @@ public class MainActivity extends AppCompatActivity
     SwipeRefreshLayout swipeRefreshLayout;
     Menu menu;
 
+    TextView tvHeaderName, tvHeaderEmail;
+
+    ProductAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        navigationDrawer();
 
         App.sessPref = App.prefsManager.getUserDetails();
         Log.d(TAG, "onCreate: token_firebase" + App.sessPref.get(PrefsManager.SESS_TOKEN));
 
+
         searchProduct();
         floatingButton();
-        navigationDrawer();
         initRecycler();
     }
 
@@ -84,10 +91,15 @@ public class MainActivity extends AppCompatActivity
         call.enqueue(new Callback<Product>() {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
+                App.sessPref = App.prefsManager.getUserDetails();
+                tvHeaderName.setText(App.sessPref.get(PrefsManager.SESS_NAME));
+                tvHeaderEmail.setText(App.sessPref.get(PrefsManager.SESS_EMAIL));
+
                 Product product = response.body();
                 List<Product.Data> products = product.getProducts();
 
-                recyclerView.setAdapter(new ProductAdapter(products, MainActivity.this));
+                adapter = new ProductAdapter(products, MainActivity.this);
+                recyclerView.setAdapter(adapter);
 
                 for (int i = 0; i < products.size(); i++) {
                     Log.d(TAG, "onResponse: " + products.get(i).getProduct());
@@ -114,6 +126,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View headerView = navigationView.getHeaderView(0);
+        tvHeaderName = headerView.findViewById(R.id.tv_headerName);
+        tvHeaderEmail = headerView.findViewById(R.id.tv_headerEmail);
+
         menu = navigationView.getMenu();
     }
 
@@ -122,7 +138,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                recyclerView.setAdapter(null);
+                getProducts();
             }
         });
     }
@@ -132,7 +149,8 @@ public class MainActivity extends AppCompatActivity
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(MainActivity.this, "" + query, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "" + query, Toast.LENGTH_SHORT).show();
+                adapter.getFilter().filter(query);
                 return false;
             }
 
@@ -219,7 +237,11 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(MainActivity.this, TransActivity.class));
         } else if (id == R.id.nav_profil) {
             startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+        } else if (id == R.id.nav_rekomkendasi) {
+            startActivity(new Intent(MainActivity.this, RekomendasiActivity.class));
         } else if (id == R.id.nav_logout) {
+            tvHeaderName.setText("");
+            tvHeaderEmail.setText("");
 
             AuthState.updateToken(MainActivity.this, "");
 

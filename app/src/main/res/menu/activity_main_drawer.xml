@@ -18,6 +18,11 @@
             android:icon="@drawable/ic_transaksi"
             android:title="Transaksi"
             android:visible="false"/>
+        <item
+            android:id="@+id/nav_rekomkendasi"
+            android:icon="@drawable/ic_thumb_up"
+            android:title="Rekomendasi Lapangan"
+            android:visible="false"/>
     </group>
 
     <item android:title="Akun Saya">

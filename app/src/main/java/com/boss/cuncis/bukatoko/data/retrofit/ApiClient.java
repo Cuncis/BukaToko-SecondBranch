@@ -4,7 +4,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private static final String BASE_URL = "http://kursus-online.lazday.com/api/";
+//    private static final String BASE_URL = "http://kursus-online.lazday.com/api/";
+    private static final String BASE_URL = "http://greendeahan.com/bukafutsal/public/api/";
     private static Retrofit retrofit = null;
 
     public Retrofit getClient() {

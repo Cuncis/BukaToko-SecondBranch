@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.boss.cuncis.bukatoko.App;
 import com.boss.cuncis.bukatoko.R;
@@ -46,7 +47,12 @@ public class CartActivity extends AppCompatActivity {
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CartActivity.this, OngkirActivity.class));
+                if (adapter.getItemCount() == 0) {
+                    Toast.makeText(CartActivity.this, "Tidak ada produk", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent i = new Intent(new Intent(CartActivity.this, OngkirActivity.class));
+                    startActivity(i);
+                }
             }
         });
 
