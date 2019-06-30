@@ -53,7 +53,7 @@ public class UnpaidFragment extends Fragment {
 
         recyclerView.setAdapter(null);
         getTrans();
-        Toast.makeText(getActivity(), "Jika Belum muncul status transaksi anda, harap swipe up halaman ini", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Jika muncul upload gambar, harap swipe up halaman ini", Toast.LENGTH_SHORT).show();
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
