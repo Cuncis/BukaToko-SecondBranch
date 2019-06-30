@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,10 +39,13 @@ import com.boss.cuncis.bukatoko.utils.Utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -52,6 +56,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class OngkirActivity extends AppCompatActivity {
+
+//    Calendar c;
+//    DatePickerDialog datePickerDialog;
+//    String date;
 
     @BindView(R.id.linearSave)
     LinearLayout linearSave;
@@ -243,7 +251,6 @@ public class OngkirActivity extends AppCompatActivity {
     }
 
 
-
     private void initListener() {
         etTglTransfer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -263,9 +270,11 @@ public class OngkirActivity extends AppCompatActivity {
                         etTglTransfer.setText(Utils.getDateEvent(date));
                     }
                 }, year, month, day);
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
                 datePickerDialog.show();
             }
         });
+
 
         etBank.setOnClickListener(new View.OnClickListener() {
             @Override
